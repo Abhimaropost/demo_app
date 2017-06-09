@@ -1,0 +1,9 @@
+
+<% if current_user %>
+   I'm in dashboard
+<% else %>
+<div class='dashboard' >
+<a href="/users/sign_in" class="btn btn-success xlarge" role="button">Login</a>
+<a href="/users/sign_up" class="btn btn-success xlarge" role="button">SignUp</a>
+</div>
+<% end %>

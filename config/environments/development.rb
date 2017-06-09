@@ -34,21 +34,22 @@ Rails.application.configure do
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
+
   config.assets.raise_runtime_errors = true
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: '127.0.0.1',port: '4000' }
 
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '25',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => "sendgrid.com"
+  }
 
-  config.action_mailer.default_url_options = { :host => '127.0.0.1:4000' }
-
-#   ActionMailer::Base.smtp_settings = {
-#     :address        => 'smtp.sendgrid.net',
-#     :port           => '587',
-#     :authentication => :plain,
-#     :user_name      => ENV['SENDGRID_USERNAME'],
-#     :password       => ENV['SENDGRID_PASSWORD'],
-#     :domain         => '',
-#     :enable_starttls_auto => true
-# }
 
 
   # Raises error for missing translations
