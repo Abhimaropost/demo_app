@@ -4,26 +4,28 @@
       <a class="navbar-brand" >Demo Project</a>
     </div>
 
-    <% unless current_user %>
+    <% if current_user %>
     <ul class="nav navbar-nav">
-      <li><a href="/homes/about_us" data-turbolinks="true">About us</a></li>
-	  <li><a href="/homes/contact_us" data-turbolinks="false">Contact us</a></li>
+     <!--  <li ><a href="/homes/about_us"  class='about-us-link' >About us</a></li>
+    <li ><a href="/homes/contact_us"  class='contact-us-link'>Contact us</a></li> -->
+
+    <li><%= link_to "About us", about_us_homes_path, :class => 'about-us-link'  %> </li>
+    <li><%= link_to "Contact us", contact_us_homes_path, :class => 'contact-us-link'%> </li>
+
+
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
- 		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  href="#">Action <span class="caret"></span></a>
+    <li class="dropdown"><a class="dropdown-toggle action-link" data-toggle="dropdown"  href="#">Action <span class="caret"></span></a>
          <ul class="dropdown-menu">
-          <li><a href="/users/sign_up">View Profile</a></li>
-          <li><a href="/users/sign_up">LogOut</a></li>
+          <li><a href="/users/sign_up"  class='profile-link'>View Profile</a></li>
+          <!-- <li ><a href="/users/sign_out" data-method="delete"  class='logout-link'>LogOut</a></li> -->
+          <li > <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'logout-link'  %> </li>
+
          </ul>
         </li>
     </ul>
-	<%#else%>
-	    <!-- <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> </a></li>
-	      <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	    </ul> -->
-
-	<%end%>
+  <%end%>
 
 
   </div>

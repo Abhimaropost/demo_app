@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     byebug
     super
    # super do |resource|
-   #    UserMailer.send_welcome_email(resource)
+      GlobalMailer.welcome_email(resource).deliver if resource.save
    #  end
   end
 
@@ -13,5 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
+
+end
 
 end

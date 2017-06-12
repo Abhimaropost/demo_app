@@ -41,16 +41,23 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: '127.0.0.1',port: '4000' }
 
+  # config.action_mailer.smtp_settings = {
+  #   :address        => 'smtp.sendgrid.net',
+  #   :port           => '25',
+  #   :authentication => :plain,
+  #   :user_name      => ENV['SENDGRID_USERNAME'],
+  #   :password       => ENV['SENDGRID_PASSWORD'],
+  #   :domain         => "sendgrid.com"
+  # }
+
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '25',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => "sendgrid.com"
-  }
-
-
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'google.com',
+    :user_name            => 'developabhishek@gmail.com',
+    :password             => 'abhishek11@',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

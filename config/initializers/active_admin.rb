@@ -268,7 +268,7 @@ ActiveAdmin.setup do |config|
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
-  config.filters = true
+  # config.filters = true
 
   # Disable dashboard
   # config.dashboard = false
@@ -298,4 +298,22 @@ ActiveAdmin.setup do |config|
   # You can inherit it with own class and inject it for all resources
   #
   # config.order_clause = MyOrderClause
+
+  config.namespace :admin do |admin|
+     admin.download_links = false
+  end
+
+    ActiveAdmin::Views::Pages::Base.class_eval do
+    private
+
+    def build_footer
+      div :id => "footer" do
+        para " © 2017 Maropost Inc. All rights reserved.".html_safe
+      end
+    end
+  end
+
+
+
+
 end
