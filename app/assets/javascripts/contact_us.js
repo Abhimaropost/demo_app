@@ -1,11 +1,10 @@
  $(document).ready(function(){
 
-
   $.validator.addMethod('email_tip', function(value, element) {
     return this.optional(element) || /^[a-zA-Z0-9_\.\-]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/.test(value);
   }, "Please enter valid email.");
 
-  jQuery.validator.addMethod("lettersonly", function(value, element) {
+  jQuery.validator.addMethod("onlyletters", function(value, element) {
     return this.optional(element) || /^[a-z]+$/i.test(value);
   }, "Letters only please");
 
@@ -16,7 +15,7 @@
 
           "c_name": {
             required: true,
-            lettersonly: true,
+            onlyletters: true,
             minlength: 3,
             maxlength: 20
           },

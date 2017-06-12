@@ -1,8 +1,6 @@
 class HomesController < ApplicationController
 
-        def dashboard
-
-    end
+    def dashboard;end
 
 	def about_us;end
 
@@ -12,15 +10,17 @@ class HomesController < ApplicationController
 
     def app_user;end
 
-    def contact_mail
+    def server_error; end
+
+    def contact_mail ## will pass parameter in hashes
     	name= params[:c_name]
 		email= params[:c_email]
 		phone_number= params[:c_phone]
-		desc= params[:c_description]
-		# UserMailer.contact_us_mail(name,email,phone_number,desc).deliver
+		description= params[:c_description]
+		Notify.contact_us_mail( name,email,phone_number,description ).deliver
 		flash[:notice]= "Thanks for submitting your request. Someone will get back to you in 48hrs."
 
-	    redirect_to dashboard_homes_path, notice: 'Thanks for submitting your request. Someone will get back to you in 48hrs.' unless current_user
+	    redirect_to dashboard_homes_path
 
 	end
 

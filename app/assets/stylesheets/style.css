@@ -14,26 +14,41 @@
     text-decoration: none!important;
     display: inline-block;
 }
+
+.guest-inner{margin-top: 20%;}
+
 .xlarge:hover, .xlarge:active {
     /*background-color: red;*/
 }
+
 /*# color#for error message*/
 label.error{
     color: red !important;
 }
 
 /*##footer*/
+
 .footer {
-    background: #475055 none repeat scroll 0 0;
-    border-top: 1px solid #ddd;
-    color: #fff !important;
-    line-height: 24px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    border:20px;
     padding: 1em 0;
-   /* border:20px;
-    height:10%;
-    width:100%;*/
+     border-top: 1px solid #ddd;
+    /*background-color: #475055 none repeat scroll 0 0 !important;*/
+    background-color: #89c0de !important;
+
 }
 
+/*.navbar-inverse{
+background-color: #56b7cd!important;
+
+}*/
+
+/*.footer-text{
+    color: #fff;
+}*/
 
 
 

@@ -39,9 +39,9 @@ ActiveAdmin.register User do
         link_to 'Edit', edit_admin_user_path(user)
       end
 
-     a do
-        link_to 'Delete' , admin_users_path(user), method: :delete, :data => {:confirm => "Are you sure you want to delete this user?"}
-      end
+     # a do
+     #    link_to 'Delete' , admin_users_path(user), method: :delete, :data => {:confirm => "Are you sure you want to delete this user?"}
+     #  end
 
 
 

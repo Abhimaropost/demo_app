@@ -11,9 +11,22 @@ Rails.application.routes.draw do
       get 'dashboard'
       get 'guest_user'
       get 'app_user'
+      get 'server_error'
       post 'contact_mail'
     end
   end
+
+  get '*unmatched_route', to: 'homes#server_error'
+
+   # namespace :users do
+   #    resources :authentications do
+   #      collection do
+   #        get 'auth_email'
+   #        get 'auth_login'
+   #      end
+
+   #    end
+   #  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

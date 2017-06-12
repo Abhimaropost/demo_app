@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     byebug
     super
    # super do |resource|
-      GlobalMailer.welcome_email(resource).deliver if resource.save
+      # Notify.welcome_email(resource).deliver if resource.save
    #  end
   end
 
@@ -14,6 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-end
+
 
 end
