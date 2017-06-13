@@ -5,6 +5,8 @@
 
   <%= javascript_include_tag 'application'%>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
@@ -14,7 +16,7 @@
       <% flash.each do |key, val| %>
         <div class="alert alert-info alert-dismissable">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-           </strong><%= val %>
+           </strong><li><%= val %> </li>
         </div>
       <% end %>
       <%= yield %>

@@ -1,5 +1,4 @@
  $(document).ready(function(){
-
   $.validator.addMethod('email_tip', function(value, element) {
     return this.optional(element) || /^[a-zA-Z0-9_\.\-]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/.test(value);
   }, "Please enter valid email.");

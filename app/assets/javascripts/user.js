@@ -124,7 +124,7 @@
       });
 
 
- $("#'reset-password").validate({
+ $("#reset-password").validate({
         // Specify the validation rules
         rules: {
 

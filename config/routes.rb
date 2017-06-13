@@ -16,6 +16,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :images do
+    collection do
+      get 'validate_uniqueness'
+    end
+
+
+  end
+
   get '*unmatched_route', to: 'homes#server_error'
 
    # namespace :users do

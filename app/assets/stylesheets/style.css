@@ -35,7 +35,7 @@ label.error{
     height: 60px;
     border:20px;
     padding: 1em 0;
-     border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     /*background-color: #475055 none repeat scroll 0 0 !important;*/
     background-color: #89c0de !important;
 
@@ -50,12 +50,10 @@ background-color: #56b7cd!important;
     color: #fff;
 }*/
 
+.gallery_product{ margin-bottom: 30px; }
 
+.about-us-link, .contact-us-link, .profile-link, .logout-link , .logout-link, .gallery-link{ text-decoration: none!important;}
 
-.about-us-link, .contact-us-link, .profile-link, .logout-link , .logout-link{ text-decoration: none!important;}
-/*============================contact_us css=========================*/
-
-/*.inner-container{min-height:600px;margin: 0 30px 0 50px;text-align:center; padding-top: 82px;}*/
 
 
 
