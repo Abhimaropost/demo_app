@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'homes#dashboard'
-
    resources :homes, only: [] do
     collection do
       get 'about_us'
@@ -19,24 +18,10 @@ Rails.application.routes.draw do
   resources :images do
     collection do
       get 'validate_uniqueness'
+      post 'update_title'
     end
-
-
   end
-
+  # Handle unmatched routes
   get '*unmatched_route', to: 'homes#server_error'
-
-   # namespace :users do
-   #    resources :authentications do
-   #      collection do
-   #        get 'auth_email'
-   #        get 'auth_login'
-   #      end
-
-   #    end
-   #  end
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
 end

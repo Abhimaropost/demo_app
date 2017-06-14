@@ -3,31 +3,20 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Demo Project</a>
     </div>
-
     <% if current_user %>
-    <ul class="nav navbar-nav">
-     <!--  <li ><a href="/homes/about_us"  class='about-us-link' >About us</a></li>
-    <li ><a href="/homes/contact_us"  class='contact-us-link'>Contact us</a></li> -->
-
-    <li><%= link_to "About us", about_us_homes_path, :class => 'about-us-link'  %> </li>
-    <li><%= link_to "Contact us", contact_us_homes_path, :class => 'contact-us-link'%> </li>
-    <li><%= link_to "Gallery", images_path, :class => 'gallery-link'%> </li>
-
-
-
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown"><a class="dropdown-toggle action-link" data-toggle="dropdown"  href="#">Action <span class="caret"></span></a>
-         <ul class="dropdown-menu">
-          <li><a href="/users/sign_up"  class='profile-link'>View Profile</a></li>
-          <!-- <li ><a href="/users/sign_out" data-method="delete"  class='logout-link'>LogOut</a></li> -->
-          <li > <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'logout-link'  %> </li>
-
-         </ul>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "About us", about_us_homes_path, :class => 'about-us-link'  %> </li>
+        <li><%= link_to "Contact us", contact_us_homes_path, :class => 'contact-us-link'%> </li>
+        <li><%= link_to "Gallery", images_path, :class => 'gallery-link'%> </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a class="dropdown-toggle action-link" data-toggle="dropdown"  href="#">Action <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+              <!-- <li><a href="/users/sign_up"  class='profile-link'>View Profile</a></li> -->
+              <li > <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'logout-link'  %> </li>
+           </ul>
         </li>
-    </ul>
-  <%end%>
-
-
+      </ul>
+    <%end%>
   </div>
 </nav>

@@ -1,7 +1,7 @@
-	<div class="row">
-      <div class="col-md-6 col-md-offset-3">
+<div class="row">
+  <div class="col-md-12 ">
+      <div class="col-md-6 ">
         <div class="well well-sm">
-          <!-- <form class="form-horizontal" action="" method="post"> -->
           <%= form_for :new,url: contact_mail_homes_path , html: {:id => 'contact_us', class: "form-horizontal" } do |f| %>
           <fieldset>
             <legend class="text-center">Contact us</legend>
@@ -26,7 +26,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" >Phone number</label>
               <div class="col-md-9">
-              <input type="text" class="form-control" name="c_phone" placeholder="Phone number" maxlength=12>
+                 <input type="text" class="form-control" name="c_phone" placeholder="Phone number" maxlength=12>
               </div>
             </div>
 
@@ -44,9 +44,19 @@
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
               </div>
             </div>
+
           </fieldset>
-          </form>
+
           <%end%>
         </div>
       </div>
+<!--
+      <div class="col-md-6 ">
+        <div class="well well-sm">
+           <iframe width="500" height="400" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDBvzq5WsidARhAZ0821MB1iAMTPnHiamI&q=155 University Ave Suite 1900, Toronto, ON M5H 3B7, Canada" allowfullscreen>
+        </div>
+      </div> -->
+
+  </div>
 </div>

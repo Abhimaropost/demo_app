@@ -1,4 +1,68 @@
 <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<%= image_tag image.photo.url ,width:"200" ,height:"150"%>
-	<div><strong><%= image.title %></strong></div>
+	<div class="image-title"  data-title="<%=image.title%>" maxlength = 20 id="<%= image.id %>"  onclick="editable(this);"><%=image.title%></div>
 </div>
+
+<script type="text/javascript">
+function editable($this){
+	$this = $($this);
+	$title_text = $this.val();
+	if (!($this.hasClass('title-editable'))) {
+	    $this.addClass('title-editable');
+		$this.attr('contenteditable', 'true');
+	}
+}
+
+
+
+
+
+$(".image-title").keypress(function(event){
+    var cntMaxLength = $(this).attr('maxlength');
+    $this= this
+    $pre_title= $(this).data('title')
+    $title = $(this).text().replace(/\-/g, '');
+    if ( parseInt($title.length) === parseInt(cntMaxLength) && event.keyCode != 8 ) {
+         event.preventDefault();
+    }
+
+    if(event.keyCode == 13 && $pre_title==$title && ( $($this).hasClass('title-editable') )  ){
+      $($this).attr('contenteditable', 'false');
+      $($this).removeClass('title-editable');
+    }
+
+
+    if(event.keyCode == 13 && $pre_title!=$title){
+      id = $(this).attr('id');
+      $.ajax({
+        type: "POST",
+        url: 'images/update_title',
+        data:{id: id, title: $title},
+        dataType: "json",
+        success:function(data){
+          if (data === true){
+           $($this).attr('contenteditable', 'false');
+           $($this).removeClass('title-editable');
+           $($this).text($title);
+           $($this).data('title',$title);
+
+
+          }
+          else{
+            // alert("should be unique!");
+            $($this).attr('contenteditable', 'false');
+            $($this).removeClass('title-editable');
+            $($this).text($pre_title);
+
+          }
+        }
+      });
+    }
+  });
+
+
+
+
+</script>
+
+

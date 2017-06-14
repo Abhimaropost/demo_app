@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # override devise registration action
   def create
-    byebug
+    # byebugs
     super
    # super do |resource|
       # Notify.welcome_email(resource).deliver if resource.save

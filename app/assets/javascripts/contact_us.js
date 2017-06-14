@@ -8,10 +8,8 @@
   }, "Letters only please");
 
   $("#contact_us").validate({
-
         // Specify the validation rules
         rules: {
-
           "c_name": {
             required: true,
             onlyletters: true,
@@ -59,6 +57,6 @@
         submitHandler: function(form) {
           form.submit();
         }
-      });
+  });
 
-      });
+});

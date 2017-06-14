@@ -5,24 +5,24 @@ console.log("hai!")
         rules: {
           "image[title]": {
             required: true,
-            maxlength: 30,
+            maxlength: 20,
             remote: "images/validate_uniqueness"
           }
-
         },
 
         // Specify the validation error messages
         messages: {
-
            "image[title]": {
             required: "Please enter title.",
           }
         },
-
         submitHandler: function(form) {
           form.submit();
         }
       });
+
+
+
 
 
 
