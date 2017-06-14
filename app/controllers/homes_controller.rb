@@ -13,7 +13,7 @@ class HomesController < ApplicationController
     def server_error; end
 
     def contact_mail ## will pass parameter in hashes
-    	return redirect_to :back  if params[:c_name].present? && params[:c_email].present? && params[:c_phone].present? && params[:c_description]
+    	return redirect_to :back  unless params[:c_name].present? && params[:c_email].present? && params[:c_phone].present? && params[:c_description].present?
     	name= params[:c_name]
 		email= params[:c_email]
 		phone_number= params[:c_phone]

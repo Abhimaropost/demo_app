@@ -83,7 +83,7 @@
             // password: "Please enter valid password."
           },
            "user[password_confirmation]": {
-            required: "Please enter confirmation password ."
+            required: "Please enter  password confirmation."
             // password: "Please enter valid password."
           }
 

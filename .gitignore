@@ -11,3 +11,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore application configuration
+
+
+/public/*
+database.yml
+secrets.yml
+application.yml
+
+

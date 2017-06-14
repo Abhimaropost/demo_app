@@ -25,6 +25,50 @@ console.log("hai!")
 
 
 
+$(".image-title").keypress(function(event){
+    var cntMaxLength = $(this).attr('maxlength');
+    $this= this
+    $pre_title= $(this).data('title')
+    $title = $(this).text().replace(/\-/g, '');
+    if ( parseInt($title.length) === parseInt(cntMaxLength) && event.keyCode != 8 ) {
+         event.preventDefault();
+    }
+
+    if(event.keyCode == 13 && $pre_title==$title && ( $($this).hasClass('title-editable') )  ){
+      $($this).attr('contenteditable', 'false');
+      $($this).removeClass('title-editable');
+    }
+
+
+    if(event.keyCode == 13 && $pre_title!=$title){
+      id = $(this).attr('id');
+      $.ajax({
+        type: "POST",
+        url: 'images/update_title',
+        data:{id: id, title: $title},
+        dataType: "json",
+        success:function(data){
+          if (data === true){
+           $($this).attr('contenteditable', 'false');
+           $($this).removeClass('title-editable');
+           $($this).text($title);
+           $($this).data('title',$title);
+
+
+          }
+          else{
+            alert("Title should be unique!");
+            $($this).attr('contenteditable', 'false');
+            $($this).removeClass('title-editable');
+            $($this).text($pre_title);
+
+          }
+        }
+      });
+    }
+  });
+
+
 
 //  var formData = new FormData(),
 //     $input = $('#avatar');
