@@ -10,6 +10,9 @@
     vertical-align:middle;
 }
 
+
+
+
 .xlarge{
     text-transform: uppercase;
     text-align: center;
@@ -49,6 +52,14 @@ label.error{
 
 }
 
+.footer-res{
+ height: 60px;;
+     border:20px;
+    padding: 1em 0;
+    border-top: 1px solid #ddd;
+    background-color: #89c0de !important;
+}
+
 /*.navbar-inverse{
 background-color: #56b7cd!important;
 
@@ -82,4 +93,26 @@ background-color: #56b7cd!important;
     cursor: pointer;
 }
 
+.about-us-content{
+    overflow-y: auto;
+}
+.wrap-why {
+    padding: 0 50px;
+    margin-bottom: 160px;
+}
+.wrap-why {
+    margin-bottom: 145px;
+    text-align: center;
+}
+
+.col-text {
+    position:absolute;
+    color: #fff;
+    font-weight: 300!important;
+    z-index: 1;
+    top: 0;
+    eft: 100;
+    margin: 280px 337px 60px 323px;
+    font-size: large!important
+}
 

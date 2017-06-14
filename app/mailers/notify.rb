@@ -1,5 +1,5 @@
 class Notify < ApplicationMailer
-	default from: 'notifications@example.com'
+	# default from: 'notifications@example.com'
 
   def welcome_email object
     @user = object

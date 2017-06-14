@@ -1,5 +1,5 @@
-<div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-3">
-	<%= image_tag image.photo.url ,width:"200" ,height:"150"%>
+<div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-3 img-responsive" >
+	<%= image_tag image.photo.url ,width:"200" ,height:"150", class: ""%>
 	<div class="image-title"  data-title="<%=image.title%>" maxlength = 20 id="<%= image.id %>"  onclick="editable(this);"><%=image.title%></div>
 </div>
 
