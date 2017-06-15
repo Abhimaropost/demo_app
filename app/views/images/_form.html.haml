@@ -1,0 +1,18 @@
+.well
+  = form_for :image, url: images_path,  method: :post,  :html => {class: 'form-horizontal clearfix', id: "image-form", multipart: true }   do |f|
+    .upload_sec
+      .row.m-b-20
+        .col-sm-12
+          .row
+            .col-md-3.col-sm-4.col-xs-12.col-lg-3
+              .form-group.addupload.clearfix
+                %img#preview-img{:height => "150", :width => "200"}/
+              .form-group.clearfix.hide.image-title
+                = f.text_field :title ,maxlength:30, placeholder: 'title'
+            .col-md-9.col-sm-8.col-xs-12.col-lg-9.text-left
+              %h4 Upload Gallery Image
+              .fileUpload.btn.btn-primary
+                = f.file_field :photo,:class=>"upload",data: { preview_element_id: 'preview-img'}, :accept=>"Image/*"
+            .form-group
+              .col-sm-offset-3.col-sm-9
+                = f.submit "Submit", class: 'btn btn-primary hide image-submit'

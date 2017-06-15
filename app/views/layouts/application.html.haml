@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title DemoApp
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    = render template: "layouts/header"
+    .container
+      - flash.each do |key, val|
+        .alert.alert-info.alert-dismissable
+          %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
+          = val
+      = yield
+    = render template: "layouts/footer"

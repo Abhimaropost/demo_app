@@ -1,0 +1,11 @@
+.row
+  .col-md-6.col-md-offset-3
+    .well.well-sm
+      %fieldset
+        .form-group
+          Sorry, we can’t seem to find the page you were looking for.
+        .form-group
+          If you would like to return to your main dashboard click #{link_to "here", root_path}.
+        - if current_user
+          .form-group
+            Our team have been informed about this error and will look into it as a top priority. But if the problem persists, please feel free to #{link_to "contact us", contact_us_homes_path}

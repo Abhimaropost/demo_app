@@ -1,0 +1,17 @@
+.row
+  .col-md-6.col-md-offset-3
+    .well.well-sm
+      %fieldset
+        .form-group
+          .col-md-12.user-email
+            Welcome #{current_user.email}
+        .form-group
+          .col-md-12
+            Thanks for subscribing with us!
+        .form-group
+          .col-md-12
+            You can explore Gallery  by clicking
+            \#{link_to "Gallery", images_path, :class => 'gallery-link btn btn-success'}
+
+
+

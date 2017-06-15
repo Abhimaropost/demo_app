@@ -1,0 +1,34 @@
+.row
+  .col-md-12
+    .col-md-6
+      .well.well-sm
+        = form_for :new,url: contact_mail_homes_path , html: {:id => 'contact_us', class: "form-horizontal" } do |f|
+          %fieldset
+            %legend.text-center Contact us
+            / Name input
+            .form-group
+              %label.col-md-3.control-label Name
+              .col-md-9
+                %input.form-control{:maxlength => "20", :name => "c_name", :placeholder => "Name", :type => "text"}/
+            / Email input
+            .form-group
+              %label.col-md-3.control-label Email
+              .col-md-9
+                %input.form-control{:maxlength => "64", :name => "c_email", :placeholder => "Email", :type => "email"}/
+            / Phone number input
+            .form-group
+              %label.col-md-3.control-label Phone number
+              .col-md-9
+                %input.form-control{:maxlength => "12", :name => "c_phone", :placeholder => "Phone number", :type => "text"}/
+            / Description body
+            .form-group
+              %label.col-md-3.control-label Description
+              .col-md-9
+                %textarea.form-control{:maxlength => "500", :name => "c_description", :placeholder => "Please enter your message here...", :rows => "5"}
+            / Form actions
+            .form-group
+              .col-md-12.text-right
+                %button.btn.btn-primary.btn-lg{:type => "submit"} Submit
+    .col-md-6
+      .well.well-sm
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "400", :src => "https://www.google.com/maps/embed/v1/place?key=AIzaSyDBvzq5WsidARhAZ0821MB1iAMTPnHiamI&q=155 University Ave Suite 1900, Toronto, ON M5H 3B7, Canada", :style => "border:0", :width => "500"}

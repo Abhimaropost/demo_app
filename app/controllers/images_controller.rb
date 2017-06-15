@@ -7,14 +7,14 @@ class ImagesController < ApplicationController
 	def create
         # byebug
 		# begin
-		    @photo = current_user.images.new(image_params)
-		    if @photo.save
-				flash[:success] = "Image uploaded successfully!"
-				redirect_to images_path
-			else
-			    flash[:notice]= "Something went wrong! Please try again laterdddddß!"
-		        redirect_to dashboard_homes_path
-			end
+	    @photo = current_user.images.new(image_params)
+	    if @photo.save
+			flash[:success] = "Image uploaded successfully!"
+			redirect_to images_path
+		else
+		    flash[:notice]= "Something went wrong! Please try again laterdddddß!"
+	        redirect_to dashboard_homes_path
+		end
 		# rescue Exception => e
 		# 	flash[:notice]= "Something went wrong! Please try again laterdddddß!"
 		#     redirect_to dashboard_homes_path

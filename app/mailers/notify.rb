@@ -8,12 +8,11 @@ class Notify < ApplicationMailer
     mail(to: @email, subject: 'Welcome to My Awesome Site')
   end
 
-  def contact_us_mail  name,email,phone_number,description
-     @name = name
-     @email = email
-     @phone_number = phone_number
-     @description = description
+  def contact_us_mail  info
+     @name = info[:name]
+     @email = info[:email]
+     @phone_number = info[:phone_number]
+     @description = info[:description]
      mail(to: @email, subject: 'Thanks for cantacting us!')
-
   end
 end
