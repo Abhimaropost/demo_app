@@ -10,9 +10,6 @@
     vertical-align:middle;
 }
 
-
-
-
 .xlarge{
     text-transform: uppercase;
     text-align: center;
@@ -54,7 +51,7 @@ label.error{
 
 .footer-res{
  height: 60px;;
-     border:20px;
+    border:20px;
     padding: 1em 0;
     border-top: 1px solid #ddd;
     background-color: #89c0de !important;
@@ -77,19 +74,17 @@ background-color: #56b7cd!important;
     text-decoration: none!important;
 }
 
-
- .title-editable  {
+.title-editable  {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 3px;
     box-shadow: 0 0 3px #000000;
     display: table;
-    padding: 3px;
     outline: 0px;
     /*height: 22px;*/
-    width: 80%;
-  }
+    width: 76%;
+}
 
-  .image-title {
+.image-title {
     cursor: pointer;
 }
 
@@ -105,14 +100,33 @@ background-color: #56b7cd!important;
     text-align: center;
 }
 
-.col-text {
-    position:absolute;
-    color: #fff;
-    font-weight: 300!important;
-    z-index: 1;
-    top: 0;
-    eft: 100;
-    margin: 280px 337px 60px 323px;
+
+
+.user-email{
     font-size: large!important
 }
+
+.abt-content{
+    padding-top: 32px;
+}
+
+
+
+
+.thumbnail {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    color: #fff!important;
+    font-weight: 300!important;
+    font-size: large!important;
+
+    z-index: 1;
+}
+
 

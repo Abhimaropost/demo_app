@@ -4,8 +4,8 @@
           <fieldset>
 
 			<div class="form-group">
-              <div class="col-md-12">
-                <h3>Welcome <%=current_user.email%></h3>
+              <div class="col-md-12 user-email">
+                Welcome <%=current_user.email%>
               </div>
             </div>
 
@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-					You can explore Gallery  by clicking
+					          You can explore Gallery  by clicking
                     <%= link_to "Gallery", images_path, :class => 'gallery-link btn btn-success'%>
 
                 </div>
@@ -27,3 +27,6 @@
         </div>
     </div>
 </div>
+
+
+

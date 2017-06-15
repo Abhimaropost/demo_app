@@ -3,12 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-   # if Rails.env.production?
-   if Rails.env.development?
-    unless Rails.application.config.consider_all_requests_local
-      rescue_from Exception, with: :render_500
+    # Exception handeling
+    # if Rails.env.production?
+    if Rails.env.development?
+      unless Rails.application.config.consider_all_requests_local
+        rescue_from Exception, with: :render_500
+      end
     end
-  end
 
   def render_500(exception)
     logger.info exception.backtrace.join("\n")

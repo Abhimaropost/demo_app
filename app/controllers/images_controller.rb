@@ -1,20 +1,24 @@
 class ImagesController < ApplicationController
+   before_action :authenticate_user!
 
 	def index
         @images= current_user.images.page(params[:page]).per(8)
 	end
 	def create
-        # byebugs
-	    @photo = current_user.images.new(image_params)
-		respond_to do |format|
-			if @photo.save!
-			    flash[:success] = "Image uploaded successfully!"
-			    format.html {redirect_to images_path }
-		        format.js { redirect_to images_path}
+        # byebug
+		# begin
+		    @photo = current_user.images.new(image_params)
+		    if @photo.save
+				flash[:success] = "Image uploaded successfully!"
+				redirect_to images_path
 			else
-		        format.html { render 'images/index'}
+			    flash[:notice]= "Something went wrong! Please try again laterdddddß!"
+		        redirect_to dashboard_homes_path
 			end
-	    end
+		# rescue Exception => e
+		# 	flash[:notice]= "Something went wrong! Please try again laterdddddß!"
+		#     redirect_to dashboard_homes_path
+		# end
 	end
 
     def update_title

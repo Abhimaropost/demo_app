@@ -11,7 +11,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
 </head>
 <body>
-<%= render template: "layouts/header"%>
+  <%= render template: "layouts/header"%>
     <div class="container">
       <% flash.each do |key, val| %>
         <div class="alert alert-info alert-dismissable">
@@ -20,12 +20,8 @@
         </div>
       <% end %>
       <%= yield %>
-
     </div>
-
-
-<%= render template: "layouts/footer"%>
-
+  <%= render template: "layouts/footer"%>
 </body>
 </html>
 

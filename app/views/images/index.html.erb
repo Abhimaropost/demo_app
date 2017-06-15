@@ -5,8 +5,8 @@
       </div>
    </div>
     <% if @images.present? %>
-        <div class="index-image">
-          <%= render   @images  %>
+        <div class="row">
+          <%= render  @images  %>
         </div>
         <div class="col-md-12 ">
           <%= paginate @images , window: 2 %>

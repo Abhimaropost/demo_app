@@ -42,6 +42,7 @@ $(".image-title").keypress(function(event){
 
     if(event.keyCode == 13 && $pre_title!=$title){
       id = $(this).attr('id');
+      id= id.split("_")[1]
       $.ajax({
         type: "POST",
         url: 'images/update_title',
