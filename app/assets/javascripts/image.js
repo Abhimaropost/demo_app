@@ -1,6 +1,5 @@
 $(document).ready(function(){
-console.log("hai!")
- $("#image-form").validate({
+  $("#image-form").validate({
         // Specify the validation rules
         rules: {
           "image[title]": {
@@ -9,23 +8,21 @@ console.log("hai!")
             remote: "images/validate_uniqueness"
           }
         },
-
         // Specify the validation error messages
         messages: {
            "image[title]": {
             required: "Please enter title.",
+            remote:"Title already exist."
+
           }
         },
         submitHandler: function(form) {
           form.submit();
         }
-      });
+  });
 
 
-
-
-
-$(".image-title").keypress(function(event){
+  $(".image-title").keypress(function(event){
     var cntMaxLength = $(this).attr('maxlength');
     $this= this
     $pre_title= $(this).data('title')
@@ -68,24 +65,6 @@ $(".image-title").keypress(function(event){
       });
     }
   });
-
-
-
-//  var formData = new FormData(),
-//     $input = $('#avatar');
-
-// formData.append('user[avatar]', $input[0].files[0]);
-
-// $.ajax({
-//   url: this.model.url(),
-//   data: formData,
-//   cache: false,
-//   contentType: false,
-//   processData: false,
-//   type: 'PUT'
-// });
-
-
 
 
 

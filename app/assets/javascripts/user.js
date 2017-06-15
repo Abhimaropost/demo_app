@@ -67,7 +67,8 @@
             required: true,
             password_tip: true,
             minlength: 8,
-            maxlength: 16
+            maxlength: 16,
+            equalTo: "#user_password"
           }
 
         },
@@ -83,8 +84,9 @@
             // password: "Please enter valid password."
           },
            "user[password_confirmation]": {
-            required: "Please enter  password confirmation."
+            required: "Please enter  password confirmation.",
             // password: "Please enter valid password."
+            equalTo: "Password confirmation didn't matched."
           }
 
         },
