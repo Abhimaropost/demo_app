@@ -58,7 +58,7 @@ Rails.application.configure do
     :port                 => 587,
     :domain               => 'google.com',
     :user_name            => "developabhishek@gmail.com",
-    :password             => "abhishek11@",
+    :password             => "",
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 

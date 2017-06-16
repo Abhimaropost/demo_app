@@ -1,28 +1,4 @@
 $(document).ready(function(){
-  // $("#image-form").validate({
-  //       // Specify the validation rules
-  //       rules: {
-  //         "image[title]": {
-  //           required: true,
-  //           maxlength: 20,
-  //           remote: "images/validate_uniqueness"
-  //         }
-  //       },
-  //       // Specify the validation error messages
-  //       messages: {
-  //          "image[title]": {
-  //           required: "Please enter title.",
-  //           remote:"Title already exist."
-
-  //         }
-  //       },
-  //       submitHandler: function(form) {
-  //         form.submit();
-  //       }
-  // });
-
-
-
 
 $(".image-submit").on('click',function(e){
 // $("#title-val").on('focusout',function(e){
@@ -59,12 +35,9 @@ $(".image-submit").on('click',function(e){
     }
     else{
       $(".image-submit").unbind('click').click();
-
     // $(".image-submit").unbind('click').click();
     }
   },100);
-
-
 
   });
 
