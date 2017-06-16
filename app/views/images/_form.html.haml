@@ -7,8 +7,9 @@
             .col-md-3.col-sm-4.col-xs-12.col-lg-3
               .form-group.addupload.clearfix
                 %img#preview-img{:height => "150", :width => "200"}/
-              .form-group.clearfix.hide.image-title
-                = f.text_field :title ,maxlength:30, placeholder: 'title'
+              .form-group.clearfix.hide.image-text-val
+                = f.text_field :title ,maxlength:30, placeholder: 'title', id:'title-val'
+              .form-group.error.error_title
             .col-md-9.col-sm-8.col-xs-12.col-lg-9.text-left
               %h4 Upload Gallery Image
               .fileUpload.btn.btn-primary

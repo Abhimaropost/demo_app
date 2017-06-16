@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
 			flash[:success] = "Image uploaded successfully!"
 			redirect_to images_path
 		else
-		    flash[:notice]= "Something went wrong! Please try again laterdddddß!"
+		    flash[:notice]= "Something went wrong! Please try again later!"
 	        redirect_to dashboard_homes_path
 		end
 		# rescue Exception => e
@@ -38,8 +38,8 @@ class ImagesController < ApplicationController
 	end
 
 	def validate_uniqueness
-	    status = Image.exists?(["lower(title) = ?", params[:image][:title].downcase])
-	    render :json => !status
+	    status = Image.exists?(["lower(title) = ?", params[:title].downcase])
+	    render :json => status
 	end
 
 	private

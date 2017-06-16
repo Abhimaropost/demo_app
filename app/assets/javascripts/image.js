@@ -1,25 +1,74 @@
 $(document).ready(function(){
-  $("#image-form").validate({
-        // Specify the validation rules
-        rules: {
-          "image[title]": {
-            required: true,
-            maxlength: 20,
-            remote: "images/validate_uniqueness"
-          }
-        },
-        // Specify the validation error messages
-        messages: {
-           "image[title]": {
-            required: "Please enter title.",
-            remote:"Title already exist."
+  // $("#image-form").validate({
+  //       // Specify the validation rules
+  //       rules: {
+  //         "image[title]": {
+  //           required: true,
+  //           maxlength: 20,
+  //           remote: "images/validate_uniqueness"
+  //         }
+  //       },
+  //       // Specify the validation error messages
+  //       messages: {
+  //          "image[title]": {
+  //           required: "Please enter title.",
+  //           remote:"Title already exist."
 
-          }
+  //         }
+  //       },
+  //       submitHandler: function(form) {
+  //         form.submit();
+  //       }
+  // });
+
+
+
+
+$(".image-submit").on('click',function(e){
+// $("#title-val").on('focusout',function(e){
+  console.log("focusout")
+    e.preventDefault();
+    $title = $('#title-val').val().trim();
+    $(".error").hide();
+    $(".error").html('');
+    var count = 0;
+    if ($title === '') {
+      count+=1  ;
+      $(".error_title").html('Title is required.');
+    } else {
+      $.ajax({
+            type: "GET",
+            url: "/images/validate_uniqueness",
+            data:{title: $title},
+            dataType: "json",
+            success:function(data){
+              if (data == true){
+
+                 count=+1;
+
+                 $('.error_title').html('Title should be unique!');
+              }
         },
-        submitHandler: function(form) {
-          form.submit();
-        }
+
+      });
+
+    };
+    setTimeout(function(){
+ if(parseInt(count) >= 1) {
+      $(".error").show();
+    }
+    else{
+      $(".image-submit").unbind('click').click();
+
+    // $(".image-submit").unbind('click').click();
+    }
+  },100);
+
+
+
   });
+
+
 
 
   $(".image-title").keypress(function(event){

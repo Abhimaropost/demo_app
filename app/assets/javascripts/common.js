@@ -44,7 +44,7 @@
         }
       }
       reader.readAsDataURL(current_element.files[0]);
-      $('.image-title').removeClass("hide");
+      $('.image-text-val').removeClass("hide");
       $('.image-submit').removeClass("hide");
       // $('.image-title').style.display = 'none' ;
 
