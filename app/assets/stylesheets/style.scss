@@ -109,6 +109,7 @@ background-color: #56b7cd!important;
 .abt-content{
     padding-top: 32px;
 }
+
 .container{margin-top: 5%}
 
 
@@ -127,5 +128,31 @@ background-color: #56b7cd!important;
     font-size: large!important;
     z-index: 1;
 }
+
+
+
+
+
+
+@media (min-width: 800px) and (max-width:1100px) {
+.container {
+    margin-top: 10%!important;
+}
+}
+
+@media (min-width: 500px) and (max-width:800px) {
+.container {
+    margin-top: 15%!important;
+}
+}
+
+@media (min-width: 300px) and (max-width:500px) {
+.container {
+    margin-top: 20%!important;
+}
+}
+
+
+
 
 
