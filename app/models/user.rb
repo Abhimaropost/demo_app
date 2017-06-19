@@ -4,11 +4,19 @@ class User < ActiveRecord::Base
   has_many :images, :dependent => :destroy
   # before_validation :generate_password, :on => :create
   after_commit :acknowledge_mail  , :on => :create ## send acknowlegement mail to user
-  attr_accessor :random_password
+  # attr_accessor :random_password
+
+
+  # def self.get_password(password)
+  #   return Proc.new {|n| password }
+  # end
 
   def self.assign_password
+    # byebug
+    @@random_password = ""
     password = User.generate_password
-    @random_password = password
+    # @@random_password = User.get_password(password)
+    @@random_password = Proc.new{|n| password }
     password
   end
 
@@ -23,13 +31,9 @@ class User < ActiveRecord::Base
   end
 
   def acknowledge_mail
-    mail_hash={object: self, password: @random_password}
+    mail_hash={object: self, password: @@random_password.call()}
     Notify.welcome_email(mail_hash).deliver_now
   end
 
 end
-
-
-
-
 

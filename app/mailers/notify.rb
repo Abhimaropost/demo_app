@@ -2,6 +2,7 @@ class Notify < ApplicationMailer
 	default from: 'notifications@example.com'
 
   def welcome_email mail_hash
+    # byebug
     @random_password = mail_hash[:password]
     @user = mail_hash[:object]
     @email = @user.email

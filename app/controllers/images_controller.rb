@@ -18,7 +18,8 @@ class ImagesController < ApplicationController
 			end
 		else
 	        success_count, error_count = Image.import(params[:image][:photo], current_user)
-	        byebug
+	        # success_count, error_count = BackgroundWorker.perform_async(params, current_user,"import")
+	        # byebug
 			flash[:success] = "Image uploaded with #{success_count} success  and  #{error_count} errors "
 			redirect_to images_path
 	   end

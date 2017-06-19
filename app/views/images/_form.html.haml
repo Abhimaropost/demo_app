@@ -15,5 +15,5 @@
               .fileUpload.btn.btn-primary
                 = f.file_field :photo,:class=>"upload",data: { preview_element_id: 'preview-img'}, :accept=>"Image/*"
             .form-group
-              .col-sm-offset-3.col-sm-9
-              = f.submit "Submit", data:{uploadtype: "test"} ,id: 'submit-image', class: 'btn btn-primary hide image-submit'
+              .col-sm-offset-3.col-sm-9.image-submit-block
+                = f.submit "Submit", data:{uploadtype: "test"} ,id: 'submit-image', class: 'btn btn-primary hide image-submit'

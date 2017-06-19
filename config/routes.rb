@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
       post 'update_title'
     end
   end
+
+  mount Sidekiq::Web => '/sidekiq'
   # Handle unmatched routes
   get '*unmatched_route', to: 'homes#server_error'
 
