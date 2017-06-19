@@ -2,11 +2,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # override devise registration action
   def create
-    # byebugs
+    # byebug
     super
-   # super do |resource|
-      # Notify.welcome_email(resource).deliver if resource.save
-   #  end
   end
 
   #PUT /resource
@@ -14,6 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+protected
+
+def build_resource(hash=nil)
+  hash[:password] = hash[:password_confirmation] = User.assign_password if hash[:email]
+  super(hash)
+end
 
 
 end

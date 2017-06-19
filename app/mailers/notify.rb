@@ -1,9 +1,10 @@
 class Notify < ApplicationMailer
-	# default from: 'notifications@example.com'
+	default from: 'notifications@example.com'
 
-  def welcome_email object
-    @user = object
-    @email = object.email
+  def welcome_email mail_hash
+    @random_password = mail_hash[:password]
+    @user = mail_hash[:object]
+    @email = @user.email
     @login_url  = 'http://127.0.0.1:4000/users/sign_in'
     mail(to: @email, subject: 'Welcome to My Awesome Site')
   end

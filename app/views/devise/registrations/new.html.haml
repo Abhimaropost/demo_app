@@ -16,15 +16,6 @@
             .col-sm-9
               = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email",maxlength: 64
           .form-group
-            = f.label :password , class: "col-md-3 control-label"
-            .col-sm-9
-              = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Enter password",maxlength: 16
-          .form-group
-            = f.label :password_confirmation , class: "col-md-3 control-label"
-            %br/
-            .col-sm-9
-              = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password" ,maxlength:16
-          .form-group
             .col-sm-offset-3.col-sm-9
               = f.submit "Sign up", class: 'btn btn-primary'
               = render "devise/shared/links"

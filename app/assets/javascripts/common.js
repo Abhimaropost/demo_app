@@ -1,4 +1,4 @@
- $(document).ready(function(){
+$(document).ready(function(){
 
 // image validation
   $(document).on('change', '.upload', function() {
@@ -10,13 +10,24 @@
     jpg_check = ext.indexOf("jpg")
     jpeg_check = ext.indexOf("jpeg")
     png_check = ext.indexOf("png")
+    csv_check = ext.indexOf("csv")
+    console.log("csv"+csv_check)
 
     if (jpg_check === 0 || jpeg_check === 0 || png_check === 0 ){
       console.log("111111")
-    }else{
+    }else if (csv_check === 0){
+      // console.log("in csv_check")
+
+      preview = false;
+      $('.image-submit').removeClass("hide");
+      document.getElementById('submit-image').setAttribute('data-uploadtype', 'csv' );
+
+
+    }
+    else{
       console.log("22222222")
 
-      alert("Invalid format! Only jpeg, jpg and png are allowed.");
+      alert("Invalid format! Only jpeg, jpg, png and csv are allowed.");
       $(this).val('');
     }
 
@@ -46,6 +57,8 @@
       reader.readAsDataURL(current_element.files[0]);
       $('.image-text-val').removeClass("hide");
       $('.image-submit').removeClass("hide");
+
+
       // $('.image-title').style.display = 'none' ;
 
 

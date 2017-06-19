@@ -56,7 +56,31 @@
             email: true,
             email_tip: true,
             maxlength: 64
-          },
+          }
+
+        },
+        // Specify the validation error messages
+        messages: {
+
+           "user[email]": {
+            required: "Please enter email.",
+            email: "Please enter valid email."
+          }
+
+        },
+
+        submitHandler: function(form) {
+          form.submit();
+        }
+      });
+
+
+
+
+$("#edit_user").validate({
+        // Specify the validation rules
+        rules: {
+
           "user[password]": {
             required: true,
             password_tip: true,
@@ -69,16 +93,19 @@
             minlength: 8,
             maxlength: 16,
             equalTo: "#user_password"
+          } ,
+          "user[current_password]":{
+            required: true,
+            password_tip: true,
+            minlength: 8,
+            maxlength: 16
           }
 
         },
         // Specify the validation error messages
         messages: {
 
-           "user[email]": {
-            required: "Please enter email.",
-            email: "Please enter valid email."
-          },
+
           "user[password]": {
             required: "Please enter password."
             // password: "Please enter valid password."
@@ -87,6 +114,10 @@
             required: "Please enter  password confirmation.",
             // password: "Please enter valid password."
             equalTo: "Password confirmation didn't matched."
+          },
+          "user[current_password]": {
+            required: "Please enter  current password .",
+
           }
 
         },
