@@ -8,10 +8,18 @@ class Image < ActiveRecord::Base
 
   def self.import(file,user)
       object_arr = [];
-	    CSV.foreach(file.path, {:encoding => 'utf-8', headers: true}) do |row|
-	  	# byebug
-     	    listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id }
-          object_arr.push(listing_hash)
+      header_arr = ["title","photo"]
+	    CSV.foreach(file.path, {:encoding => 'utf-8', headers: true, skip_blanks: true}) do |row|
+	  	byebug
+        return HEADER_SWAPPED if  row.headers.reverse === header_arr
+        return HEADER_BLANK   if  row.headers.blank?
+        return WRONG_HEADER   unless  (header_arr - header_arr).blank?
+        # return DATA_BLANK     if  (header_arr - header_arr).blank?
+
+
+
+     	    # listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id }
+          # object_arr.push(listing_hash)
       end # end CSV.foreach
       BackgroundWorker.perform_async(object_arr)
   end # end self.import(file)
@@ -36,7 +44,3 @@ class Image < ActiveRecord::Base
 
 end
 
-
-#redis demonize
-# image csv in batches
-# notification bar automatic refresh in each 5 seconds

@@ -156,7 +156,8 @@ $(document).ready(function(){
           required: true,
           password_tip: true,
           minlength: 8,
-          maxlength: 16
+          maxlength: 16,
+          equalTo: "#user_password"
         }
 
       },
@@ -168,7 +169,9 @@ $(document).ready(function(){
 
         },
         "user[password_confirmation]": {
-          required: "Please enter password."
+          required: "Please enter password.",
+          equalTo: "Password confirmation didn't matched."
+
 
         }
 

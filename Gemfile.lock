@@ -271,7 +271,6 @@ DEPENDENCIES
   jquery-validation-rails
   mysql2 (>= 0.3.13, < 0.5)
   rails (= 4.2.7.1)
-  redis
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq (~> 3.5.3)

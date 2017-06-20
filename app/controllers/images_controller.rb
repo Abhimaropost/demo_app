@@ -17,8 +17,9 @@ class ImagesController < ApplicationController
 		        path =  dashboard_homes_path
 			end
 		else
-	        Image.import(params[:image][:photo], current_user)
-			flash[:success] = "Image is uploading in background, Please refresh page after some time to verify uploading "
+	        message = Image.import(params[:image][:photo], current_user)
+			# flash[:success] = "Image is uploading in background, Please refresh page after some time to verify uploading "
+			flash[:success] = message
 	   end
 	   redirect_to path
     end

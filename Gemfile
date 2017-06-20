@@ -37,7 +37,7 @@ gem 'haml'
 # for background-process
 gem 'sidekiq', '~> 3.5.3'
 # in-memory database
-gem 'redis'
+# gem 'redis'
 # memcached client
 # gem 'dalli'
 # Use ActiveModel has_secure_password
