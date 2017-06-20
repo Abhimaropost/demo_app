@@ -36,7 +36,10 @@ gem 'carrierwave'
 gem 'haml'
 # for background-process
 gem 'sidekiq', '~> 3.5.3'
-
+# in-memory database
+gem 'redis'
+# memcached client
+# gem 'dalli'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

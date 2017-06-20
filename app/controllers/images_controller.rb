@@ -7,23 +7,20 @@ class ImagesController < ApplicationController
 
 	def create
         # byebug
-	   unless (params[:image][:photo]).content_type== "text/csv"
+		path =  images_path
+	    unless (params[:image][:photo]).content_type== "text/csv"
 		    @photo = current_user.images.new(image_params)
 		    if @photo.save
 				flash[:success] = "Image uploaded successfully!"
-				redirect_to images_path
 			else
 			    flash[:notice]= "Something went wrong! Please try again later!"
-		        redirect_to dashboard_homes_path
+		        path =  dashboard_homes_path
 			end
 		else
-	        success_count, error_count = Image.import(params[:image][:photo], current_user)
-	        # success_count, error_count = BackgroundWorker.perform_async(params, current_user,"import")
-	        # byebug
-			flash[:success] = "Image uploaded with #{success_count} success  and  #{error_count} errors "
-			redirect_to images_path
+	        Image.import(params[:image][:photo], current_user)
+			flash[:success] = "Image is uploading in background, Please refresh page after some time to verify uploading "
 	   end
-
+	   redirect_to path
     end
 
 
