@@ -45,5 +45,12 @@ class Image < ActiveRecord::Base
   end # end self.create_object
 
 
+
+  # image encoding
+  def self.image_data(data)
+    return nil unless data
+    io = CarrierStringIO.new(Base64.decode64(data))
+  end
+
 end
 

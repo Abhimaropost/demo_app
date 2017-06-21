@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-    before_action :authenticate_user!, :except => [:dashboard,:guest_user]
+    before_action :authenticate_user!, :except => [:dashboard,:guest_user,:server_error]
 
     def dashboard;end
 
@@ -11,7 +11,12 @@ class HomesController < ApplicationController
 
     def app_user;end
 
-    def server_error; end
+    def server_error
+	 	respond_to do |format|
+	      format.json { render :json => { :response_code => NO_ROUTE, :response_message => NO_ROUTE_MESSAGE} }
+	      format.html {  }
+	    end
+    end
 
     def contact_mail ## will pass parameter in hashes
 		begin
@@ -27,5 +32,4 @@ class HomesController < ApplicationController
 	end
 
 end
-
 

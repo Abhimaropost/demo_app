@@ -23,8 +23,25 @@ Rails.application.routes.draw do
     end
   end
 
+
+ namespace :api do
+        namespace :v1 do
+
+          resources :users, only: [:create]
+          resources :images, only: [:create]
+          resources :homes, except: [:index, :new, :edit, :update,:show,:destroy] do
+             collection do
+                post 'contact_mail'
+             end
+          end
+
+        end
+end
+
+
   mount Sidekiq::Web => '/sidekiq'
   # Handle unmatched routes
   get '*unmatched_route', to: 'homes#server_error'
 
 end
+
