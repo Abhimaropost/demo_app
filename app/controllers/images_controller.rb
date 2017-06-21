@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
         @images= current_user.images.page(params[:page]).per(8)
 	end
 
-	def create
+    def create
         # byebug
 		path =  images_path
 	    unless (params[:image][:photo]).content_type== "text/csv"
@@ -18,12 +18,10 @@ class ImagesController < ApplicationController
 			end
 		else
 	        message = Image.import(params[:image][:photo], current_user)
-			# flash[:success] = "Image is uploading in background, Please refresh page after some time to verify uploading "
 			flash[:success] = message
 	   end
 	   redirect_to path
     end
-
 
     def update_title
 		status = Image.all_except(params[:id]).exists?(["lower(title) = ?", params[:title].downcase])

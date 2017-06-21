@@ -1,5 +1,7 @@
 require 'csv'
+require 'common_method'
 class Image < ActiveRecord::Base
+  # extend 'CommonMethod'
   belongs_to :user
   mount_uploader :photo, AvatarUploader
   scope :all_except, ->(object) { where.not(id: object) }
@@ -7,28 +9,30 @@ class Image < ActiveRecord::Base
   validates :photo, presence: true
 
   def self.import(file,user)
-      object_arr = [];
-      header_arr = ["title","photo"]
-	    CSV.foreach(file.path, {:encoding => 'utf-8', headers: true, skip_blanks: true}) do |row|
-	  	byebug
-        return HEADER_SWAPPED if  row.headers.reverse === header_arr
-        return HEADER_BLANK   if  row.headers.blank?
-        return WRONG_HEADER   unless  (header_arr - header_arr).blank?
-        # return DATA_BLANK     if  (header_arr - header_arr).blank?
-
-
-
-     	    # listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id }
-          # object_arr.push(listing_hash)
+      $redis.del("success_count","error_count") # deleting last file upload success and error count
+      object_arr ,  header_arr , count ,status , message = [] , ["title","photo"] , 0 , false , "";
+      # byebug
+      CSV.foreach(file.path, {:encoding => 'utf-8', headers: true, skip_blanks: true}) do |row|
+        if count === 0
+          status , message= CommonMethod.csv_head_validator( {header: header_arr , file_header: row.headers} )
+          return message if status === false
+        end
+        status , message= CommonMethod.csv_row_validator({row_title: row["title"], row_image: row['photo']})
+        if status === true
+          listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id }
+          object_arr.push(listing_hash)
+        end
+        count+=1;
       end # end CSV.foreach
-      BackgroundWorker.perform_async(object_arr)
+      BackgroundWorker.perform_async(object_arr) unless object_arr.blank?
+      return (message.blank?  ? DATA_BLANK : message)
   end # end self.import(file)
 
 
   def self.create_object object_arr
     # byebug
-      $redis.del("success_count","error_count")
-      success_count = error_count = 0;
+      # $redis.del("success_count","error_count")
+      success_count , error_count = $redis.get("success_count").to_i, $redis.get("error_count").to_i
       object_arr.map{|object|
         image = Image.new(object)
         if image.save
@@ -38,7 +42,6 @@ class Image < ActiveRecord::Base
         end
       }
       $redis.mset("success_count", success_count , "error_count", error_count)
-      # $redis.set("error_count", error_count)
   end # end self.create_object
 
 
