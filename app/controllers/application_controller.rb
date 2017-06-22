@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
     # Exception handeling
     # if Rails.env.production?
-    if Rails.env.development?
-      unless Rails.application.config.consider_all_requests_local
-        rescue_from Exception, with: :render_500
-      end
+  if Rails.env.development?
+    unless Rails.application.config.consider_all_requests_local
+      rescue_from Exception, with: :render_500
     end
+  end
 
   def render_500(exception)
     logger.info exception.backtrace.join("\n")

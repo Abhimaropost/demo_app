@@ -1,19 +1,19 @@
 class Api::V1::UsersController < ApiApplicationController
- # before_filter :autenticate_user
- def create #http://0.0.0.0:4000/api/v1/users.json?
-  byebug
-   if user_params.present?   && (!user_params[:email].present? || !user_params[:password].present? || !user_params[:password_confirmation].present?)
-    return render_message({responseCode: PARTIAL_CONTENT,responseMessage: PARTIAL_CONTENT_MESSAGE})
-   end
+
+  #http://0.0.0.0:4000/api/v1/users.json?
+  def create
+    # byebug
+    message,status = request_params_validator user_params, "user"
+    return message if status === true
     user = User.new(user_params)
     if user.save
-      return render_message({responseCode: SUCCESS,responseMessage: "User has been successfully created!",
-      	       object: user})
+      return render_message({status:SUCCESS_STATUS,responseMessage: "User has been successfully created!",
+        responseCode: SUCCESS,
+        data: user.as_json(:only => [:id,:email])})
     else
-      return render_message({responseCode: ERROR,responseMessage: user.errors.full_messages.first.capitalize.to_s.gsub('_',' ') + "." })
+      return render_message({status:ERR_STATUS,responseMessage: user.errors.full_messages.first.capitalize.to_s.gsub('_',' ') + "." ,responseCode: ERROR})
     end
-
- end
+  end
 
   private
   def user_params
@@ -21,7 +21,6 @@ class Api::V1::UsersController < ApiApplicationController
   end
 
 end
-
 
 # body
 # {

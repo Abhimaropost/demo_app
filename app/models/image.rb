@@ -44,13 +44,22 @@ class Image < ActiveRecord::Base
       $redis.mset("success_count", success_count , "error_count", error_count)
   end # end self.create_object
 
-
-
   # image encoding
   def self.image_data(data)
     return nil unless data
     io = CarrierStringIO.new(Base64.decode64(data))
+    return io
   end
 
 end
 
+
+class CarrierStringIO < StringIO
+  def original_filename
+    "photo.jpeg"
+  end
+
+  def content_type
+    "image/jpeg"
+  end
+end

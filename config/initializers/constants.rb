@@ -11,22 +11,19 @@ DATA_BLANK= "No data avialable. Please fix!"
 ROW_SWAPPED="Rows data are swapped together. Please fix!"
 ROW_INVALID= "Rows data are invalid . Please fix!"
 
-SUCCESS = "200"
-ERROR = "500"
-UNPROCESSABLE_ENTITY="422"
+SUCCESS = 200
+ERROR = 500
+UNPROCESSABLE_ENTITY=422
 UNPROCESSABLE_ENTITY_MESSAGE="Invalid formate of request body!"
-NOT_ACCEPTABLE="406"
+NOT_ACCEPTABLE=406
 NOT_ACCEPTABLE_MESSAGE="Request should be in json only!"
-UNAUTHORIZED = "401"
+UNAUTHORIZED = 401
 UNAUTHORIZED_MESSAGE = "Oops! User not found."
-PARTIAL_CONTENT = "206"
+PARTIAL_CONTENT = 206
 PARTIAL_CONTENT_MESSAGE = "Some of the fields are mising!"
-NO_ROUTE = "404"
+NO_ROUTE = 404
 NO_ROUTE_MESSAGE = "No route match!"
 
-
-
-
-
-
+ERR_STATUS= "Failure"
+SUCCESS_STATUS= "Success"
 

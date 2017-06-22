@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 protected
 
 def build_resource(hash=nil)
-  hash[:password] = hash[:password_confirmation] = User.assign_password if hash[:email]
+  hash[:password] = hash[:password_confirmation] = User.assign_password(hash[:email]) if hash[:email]
   super(hash)
 end
 
