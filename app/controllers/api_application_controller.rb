@@ -24,7 +24,7 @@ class ApiApplicationController < ActionController::Base
       :message => hash[:responseMessage],
       :code => hash[:responseCode],
       :data => hash[:data]
-    }
+    }.reject {|key,value| value.blank? }
   end
 
   def request_params_validator hash , type

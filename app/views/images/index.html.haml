@@ -1,4 +1,7 @@
 %div
+  - if @images.present?
+    .row.image-loader
+      = render partial: 'image_loader'
   .new-image
     .row
       = render partial: 'form'

@@ -1,6 +1,7 @@
-.gallery_product.col-lg-3.col-md-4.img-responsive
-  = image_tag image.photo.url ,width:"263" ,height:"150", class: ""
-  .image-title{"data-title" => "#{image.title}", :id => "image_#{image.id}", :maxlength => "20", :onclick => "editable(this);"}= image.title
+= cache "image-#{image.id}", expires_in: 5.minutes do
+  .gallery_product.col-lg-3.col-md-4.img-responsive
+    = image_tag image.photo.url ,width:"263" ,height:"150", class: ""
+    .image-title{"data-title" => "#{image.title}", :id => "image_#{image.id}", :maxlength => "20", :onclick => "editable(this);"}= image.title
 :javascript
   function editable($this){
   	$this = $($this);

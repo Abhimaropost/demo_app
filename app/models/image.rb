@@ -2,7 +2,7 @@ require 'csv'
 require 'common_method'
 class Image < ActiveRecord::Base
   # extend 'CommonMethod'
-  belongs_to :user
+  belongs_to :user#, :touch => true
   mount_uploader :photo, AvatarUploader
   scope :all_except, ->(object) { where.not(id: object) }
   validates :title, presence: true,uniqueness: true
@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
         end
         status , message= CommonMethod.csv_row_validator({row_title: row["title"], row_image: row['photo']})
         if status === true
-          listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id }
+          listing_hash = {:title => row['title'],:remote_photo_url => (row['photo']).gsub('http://','https://'),user_id: user.id, type: "image" }
           object_arr.push(listing_hash)
         end
         count+=1;
@@ -34,7 +34,7 @@ class Image < ActiveRecord::Base
       # $redis.del("success_count","error_count")
       success_count , error_count = $redis.get("success_count").to_i, $redis.get("error_count").to_i
       object_arr.map{|object|
-        image = Image.new(object)
+        image = Image.new(object.except("type"))
         if image.save
           success_count+=1;
         else
@@ -42,6 +42,8 @@ class Image < ActiveRecord::Base
         end
       }
       $redis.mset("success_count", success_count , "error_count", error_count)
+      $redis.expire("success_count",1200)
+      $redis.expire("error_count",1200)
   end # end self.create_object
 
   # image encoding
