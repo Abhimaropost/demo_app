@@ -10,29 +10,11 @@
     vertical-align:middle;
 }
 
-.xlarge{
-    text-transform: uppercase;
-    text-align: center;
-    width: 220px;
-    padding: 10px;
-    color: #fff!important;
-    font-size: 18px;
-    margin-top: 2em;
-    text-decoration: none!important;
-    display: inline-block;
-}
-
 .guest-inner{
     margin-top: 20%;
 }
-
-.xlarge:hover, .xlarge:active {
-    /*background-color: red;*/
-}
-
-/*# color#for error message*/
-label.error, .error_title{
-    color: red !important;
+.container{
+    margin-top: 5%;
 }
 
 /*##footer*/
@@ -46,10 +28,6 @@ label.error, .error_title{
     border-top: 1px solid #ddd;
     /*background-color: #475055 none repeat scroll 0 0 !important;*/
     background-color: #89c0de !important;
-
-}
-.image-submit-block{
-    padding-top: 8px;
 }
 
 .footer-res{
@@ -60,21 +38,16 @@ label.error, .error_title{
     background-color: #89c0de !important;
 }
 
-/*.navbar-inverse{
-background-color: #56b7cd!important;
-
-}*/
-
-/*.footer-text{
-    color: #fff;
-}*/
-
-.gallery_product {
-    margin-bottom: 30px;
-}
-
-.about-us-link, .contact-us-link, .profile-link, .logout-link , .logout-link, .gallery-link , .update-profile {
+.xlarge{
+    text-transform: uppercase;
+    text-align: center;
+    width: 220px;
+    padding: 10px;
+    color: #fff!important;
+    font-size: 18px;
+    margin-top: 2em;
     text-decoration: none!important;
+    display: inline-block;
 }
 
 .title-editable  {
@@ -87,38 +60,12 @@ background-color: #56b7cd!important;
     width: 100%;
 }
 
-.image-title {
-    cursor: pointer;
+.image-submit-block{
+    padding-top: 8px;
 }
 
-.about-us-content{
-    overflow-y: auto;
-}
-.wrap-why {
-    padding: 0 50px;
-    margin-bottom: 160px;
-}
-.wrap-why {
-    margin-bottom: 145px;
-    text-align: center;
-}
-
-
-
-.user-email{
-    font-size: large!important
-}
-
-.abt-content{
-    padding-top: 32px;
-}
-
-.container{margin-top: 5%}
-
-
-
-.thumbnail {
-    position: relative;
+.gallery_product {
+    margin-bottom: 30px;
 }
 
 .caption {
@@ -133,26 +80,95 @@ background-color: #56b7cd!important;
 }
 
 
+.xlarge:hover, .xlarge:active {
+    /*background-color: red;*/
+}
+
+/*# color#for error message*/
+label.error, .error_title{
+    color: red !important;
+}
 
 
 
+/*.navbar-inverse{
+background-color: #56b7cd!important;
+
+}*/
+
+/*.footer-text{
+    color: #fff;
+}*/
+
+
+.about-us-link, .contact-us-link, .profile-link, .logout-link , .logout-link, .gallery-link , .update-profile {
+    text-decoration: none!important;
+}
+
+.image-title {
+    cursor: pointer;
+}
+
+.image-text{
+    color: #FFDF00;
+}
+
+.about-us-content{
+    overflow-y: auto;
+}
+
+.abt-content{
+    padding-top: 32px;
+}
+
+.wrap-why {
+    padding: 0 50px;
+    margin-bottom: 160px;
+}
+.wrap-why {
+    margin-bottom: 145px;
+    text-align: center;
+}
+
+
+.user-email{
+    font-size: large!important
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.total-image-count{
+    color: black;
+}
+
+ /*.image-submit{
+      display: inline-block;
+      margin: -11% 0%;
+    }*/
+
+
+.upload {
+    width: 100%;
+}
 
 @media (min-width: 800px) and (max-width:1100px) {
-.container {
-    margin-top: 10%!important;
-}
+    .container {
+        margin-top: 10%!important;
+    }
 }
 
 @media (min-width: 500px) and (max-width:800px) {
-.container {
-    margin-top: 15%!important;
-}
+    .container {
+        margin-top: 15%!important;
+    }
 }
 
 @media (min-width: 300px) and (max-width:500px) {
-.container {
-    margin-top: 20%!important;
-}
+    .container {
+        margin-top: 20%!important;
+    }
 }
 
 

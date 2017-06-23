@@ -18,7 +18,7 @@ class HomesController < ApplicationController
 	    end
     end
 
-    def contact_mail ## will pass parameter in hashes
+    def contact_mail
 	  begin
 	    return redirect_to :back  unless params[:c_name].present? && params[:c_email].present? && params[:c_phone].present? && params[:c_description].present?
 	    contact_mail_info={name: params[:c_name] , phone_number: params[:c_phone], email: params[:c_email] , description: params[:c_description],type: "contact" }

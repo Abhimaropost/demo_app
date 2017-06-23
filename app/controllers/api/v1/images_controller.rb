@@ -4,7 +4,6 @@ class Api::V1::ImagesController < ApiApplicationController
 
     #http://0.0.0.0:4000/api/v1/images.json?
 	def create
-      # byebug
       message,status = request_params_validator images_params, "image"
 		return message if status === true
 	    photo = Image.image_data(images_params[:photo].to_s.gsub("\\r\\n",""))
@@ -28,6 +27,7 @@ class Api::V1::ImagesController < ApiApplicationController
 	def images_params
       params.permit(:title,:photo)
 	end
+
     # before_filter for authenticate user
 	def find_image
 	  id = params[:id]
@@ -37,6 +37,7 @@ class Api::V1::ImagesController < ApiApplicationController
 	    return render_message({status:ERR_STATUS,responseMessage: "No record found", responseCode: ERROR})
 	  end
 	end
+
     # method for handle image formate error
 	def message_error errors
       errors.full_messages.find{|object| /en.errors.messages.extension_whitelist_error/ =~ object }.nil? ?

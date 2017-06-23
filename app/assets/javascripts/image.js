@@ -92,6 +92,25 @@ $(document).ready(function(){
 
 
 
+  window.onload = function() {
+    $.ajax({
+        type: "get",
+        url: 'images/image_count',
+        data:{},
+        dataType: "json",
+        success:function(data){
+          $('.image-gif').remove();
+          image_count= document.getElementById('text-color');
+          image_count.style.color = 'green';
+          $('.image-count').text(data);
+
+        }
+    });
+  }
+
+
+
+
 
 });
 

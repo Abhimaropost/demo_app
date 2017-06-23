@@ -1,6 +1,7 @@
 class BackgroundWorker
   include Sidekiq::Worker
   sidekiq_options  :retry => false
+
   def perform(object_arr)
     Notify.welcome_email(object_arr).deliver_now if object_arr.class == Hash and object_arr["type"] === "acknowledge"
     Notify.contact_us_mail(object_arr).deliver_now if object_arr.class == Hash  and object_arr["type"] === "contact"
@@ -9,5 +10,3 @@ class BackgroundWorker
 
 end
 
-
-# : vs ""

@@ -2,24 +2,23 @@ class ImagesController < ApplicationController
    before_action :authenticate_user!
 
 	def index
-        @images= current_user.images.page(params[:page]).per(8)
+      @images= current_user.images.page(params[:page]).per(8)
 	end
 
     def create
-        # byebug
 	  path =  images_path
-	    unless (params[:image][:photo]).content_type== "text/csv"
-		  @photo = current_user.images.new(image_params)
-		  if @photo.save
-		    flash[:success] = "Image uploaded successfully!"
-	      else
-		    flash[:notice]= "Something went wrong! Please try again later!"
-		    path =  dashboard_homes_path
-		  end
-		else
-	      message = Image.import(params[:image][:photo], current_user)
-		  flash[:success] = message
+	  unless (params[:image][:photo]).content_type== "text/csv"
+	    @photo = current_user.images.new(image_params)
+	    if @photo.save
+	      flash[:success] = "Image uploaded successfully!"
+	    else
+	      flash[:notice]= "Something went wrong! Please try again later!"
+	      path =  dashboard_homes_path
 	    end
+	  else
+	    message = Image.import(params[:image][:photo], current_user)
+	    flash[:success] = message
+	  end
 	  redirect_to path
     end
 
@@ -34,9 +33,12 @@ class ImagesController < ApplicationController
 	  render json: result
 	end
 
+	def image_count
+	  sleep 3
+      total_images = current_user.images.size || 0
+	  render :json => total_images
+    end
 
-	def destroy
-	end
 
 	def validate_uniqueness
 	  status = Image.exists?(["lower(title) = ?", params[:title].downcase])

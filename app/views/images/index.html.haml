@@ -1,12 +1,11 @@
 %div
-  - if @images.present?
-    .row.image-loader
-      = render partial: 'image_loader'
   .new-image
-    .row
+    .col-sm-10
       = render partial: 'form'
+    .col-sm-2
+      = render partial: 'image_loader'
   - if @images.present?
-    .row
+    .row.col-md-12
       = render  @images
     .col-md-12
       = paginate @images , window: 2

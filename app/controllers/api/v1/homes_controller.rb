@@ -3,7 +3,6 @@ class Api::V1::HomesController < ApiApplicationController
 
     # http://0.0.0.0:4000/api/v1/homes/contact_mail.json?
 	def contact_mail
-		# byebug
 	  begin
 	    message,status = request_params_validator contact_params, "contact"
 		return message if status === true
@@ -32,10 +31,3 @@ class Api::V1::HomesController < ApiApplicationController
    end
 
 end
-
-# {
-# "email": "developabhishek@gmail.com",
-# "name":  "Abhishek",
-# "phone":  "9873346003",
-# "description": "TESTING"
-# }

@@ -9,7 +9,6 @@ class ApiApplicationController < ActionController::Base
 
   # authenticate user and return if not exist
   def autenticate_user
-    # byebug
     auth_token = request.headers[:HTTP_AUTH_TOKEN] #auth_token in header
     return render_message ({status:ERR_STATUS, responseMessage: "Sorry! You are not an authenticated user.",responseCode: ERROR}) unless auth_token
     @user = User.find_by(auth_token: auth_token)
@@ -51,22 +50,7 @@ class ApiApplicationController < ActionController::Base
     end
   end
 
-
-
 end
 
 
 
-# manage un-matched route for api => done
-# need to handle bad request  => done
-# no route match => done
-# empty body => done
-# authenticate user => done
-
-
-# execption handling
-# delete object if not presents
-# mail background
-
-
-# K4IGGtKLbF1QF3APCxJLLQ

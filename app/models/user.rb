@@ -3,14 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :images, :dependent => :destroy
   before_create { generate_token(:auth_token) }
-  # before_validation :generate_password, :on => :create
   after_commit :acknowledge_mail  , :on => :create ## send acknowlegement mail to user
-  # attr_accessor :random_password
-
-
-  # def self.get_password(password)
-  #   return Proc.new {|n| password }
-  # end
 
   def generate_token(column)
     begin
@@ -39,7 +32,6 @@ class User < ActiveRecord::Base
     password = $redis.get(self.email)
     mail_hash={email: self.email, password: password,type: "acknowledge"}
     BackgroundWorker.perform_async mail_hash
-    # Notify.welcome_email(mail_hash).deliver_now
   end
 
 end

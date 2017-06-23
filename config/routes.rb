@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       get 'validate_uniqueness'
       post 'update_title'
+      get 'image_count'
     end
   end
 

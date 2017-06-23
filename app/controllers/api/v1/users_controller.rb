@@ -2,7 +2,6 @@ class Api::V1::UsersController < ApiApplicationController
 
   #http://0.0.0.0:4000/api/v1/users.json?
   def create
-    # byebug
     message,status = request_params_validator user_params, "user"
     return message if status === true
     user = User.new(user_params)
@@ -22,12 +21,3 @@ class Api::V1::UsersController < ApiApplicationController
 
 end
 
-# body
-# {
-
-# "email": "qq@gmail.com",
-# "password": "12345678",
-# "password_confirmation": "12345678"
-
-
-# }
