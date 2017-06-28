@@ -1,10 +1,12 @@
 $(document).ready(function(){
+  path = window.location.pathname.split("/")
+  action= path[1]
 
   $(".image-submit").on('click',function(e){
      upload_type = $(this).data('uploadtype')
     if (upload_type!='csv'){
 
-    console.log("focusout")
+      console.log("focusout")
       e.preventDefault();
       $title = $('#title-val').val().trim();
       $(".error").hide();
@@ -31,8 +33,8 @@ $(document).ready(function(){
         });
 
       };
-      setTimeout(function(){
-   if(parseInt(count) >= 1) {
+    setTimeout(function(){
+      if(parseInt(count) >= 1) {
         $(".error").show();
       }
       else{
@@ -90,23 +92,24 @@ $(document).ready(function(){
     }
   });
 
+  if(action === "images"){
+    window.onload = function() {
+      $.ajax({
+          type: "get",
+          url: 'images/image_count',
+          data:{},
+          dataType: "json",
+          success:function(data){
+            $('.image-gif').remove();
+            image_count= document.getElementById('text-color');
+            image_count.style.color = 'green';
+            $('.image-count').text(data);
 
-
-  window.onload = function() {
-    $.ajax({
-        type: "get",
-        url: 'images/image_count',
-        data:{},
-        dataType: "json",
-        success:function(data){
-          $('.image-gif').remove();
-          image_count= document.getElementById('text-color');
-          image_count.style.color = 'green';
-          $('.image-count').text(data);
-
-        }
-    });
+          }
+      });
+    }
   }
+
 
 
 

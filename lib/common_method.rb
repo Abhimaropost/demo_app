@@ -1,6 +1,6 @@
 module CommonMethod
   extend self
-  ## for match string of an array
+  # for match string of an array
   def regex_matcher hash
   	  # byebug
   	  match_string = hash[:match_string]
