@@ -41,7 +41,7 @@ class ImagesController < ApplicationController
 
 
 	def validate_uniqueness
-	  status = Image.exists?(["lower(title) = ?", params[:title].downcase])
+	  status = current_user.images.exists?(["lower(title) = ?", params[:title].downcase])
 	  render :json => status
 	end
 
